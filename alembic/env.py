@@ -25,11 +25,14 @@ def run_migrations_offline():
         context.run_migrations()
 
 def run_migrations_online():
+    # Ensure URL from your app settings is used by Alembic
+    # This sets config['alembic']['sqlalchemy.url'] = settings.DATABASE_URL
+    config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+
     connectable = engine_from_config(
         config.get_section(config.config_ini_section),
-        prefix='',
+        prefix="sqlalchemy.",   # <-- only keys starting with 'sqlalchemy.' will be passed to create_engine()
         poolclass=pool.NullPool,
-        url=settings.DATABASE_URL
     )
 
     with connectable.connect() as connection:

@@ -4,6 +4,7 @@ from typing import Optional
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
+    name: str
 
 class UserRead(BaseModel):
     id: int

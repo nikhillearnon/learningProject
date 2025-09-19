@@ -206,5 +206,9 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
-**/__pycache__/
+# Python bytecode
 __pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
